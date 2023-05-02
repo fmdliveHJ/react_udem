@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Users from './user/pages/Users';
+import NewPlace from './places/pages/NewPlace';
+import UserPlaces from './places/pages/UserPlaces';
+import UpdatePlace from './places/pages/UpdatePlace';
+import MainNavigation from './shared/components/Navigation/MainNavigation';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <MainNavigation />
+        <main>
+          <Routes>
+            <Route path='/' element={<Users />}></Route>
+            <Route path='/:userId/places' element={<UserPlaces />}></Route>
+            <Route path='/places/new' element={<NewPlace />}></Route>
+            <Route path='/places/:placeId' element={<UpdatePlace />}></Route>
+          </Routes>
+        </main>
+      </Router>
+    </>
   );
 }
 
