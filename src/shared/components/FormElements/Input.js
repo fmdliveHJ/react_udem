@@ -46,6 +46,7 @@ const Input = (props) => {
     isValid: props.initialValid || false,
   });
 
+  //너무 자주 호출 될수 있어서 객체 구조분해를 사용해서 연관된 정보 추출
   const { id, onInput } = props;
   const { value, isValid } = inputState;
 
