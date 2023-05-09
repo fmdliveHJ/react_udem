@@ -7,14 +7,25 @@ import {
   VALIDATOR_MINLENGTH,
 } from '../../shared/util/validators';
 import './NewPlace.css';
-
+/**
+ *
+ * @param {*} state
+ * @param {*} action
+ * @returns
+ *
+ *
+ */
 const formReducer = (state, action) => {
   switch (action.type) {
     case 'INPUT_CHANGE':
       let formIsValid = true;
       for (const inputId in state.inputs) {
+        //객체이기 때문에 for in 루프로 저장된 모든 입력값 확인
+        //formState에 있는 모든 입력값을 확인하고 유효한지 확인
         if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid;
+          // 확인하는 입력값은 action에서 업데이트 되는 입력값
+          //title과 description을 받아 inputId 에 저장
+          formIsValid = formIsValid && action.isValid; //초기 입력값이 바귀면 양식 유효
         } else {
           formIsValid = formIsValid && state.inputs[inputId].isValid;
         }
@@ -35,6 +46,7 @@ const formReducer = (state, action) => {
 const NewPlace = () => {
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
+      //중첩 객체로 개별 입력값이 유효한지에 대한 정보 저장
       title: {
         value: '',
         isValid: false,
