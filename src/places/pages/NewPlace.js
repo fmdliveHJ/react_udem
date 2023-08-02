@@ -6,7 +6,7 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
 } from '../../shared/util/validators';
-import './NewPlace.css';
+// import './NewPlace.css';
 /**
  *
  * @param {*} state
